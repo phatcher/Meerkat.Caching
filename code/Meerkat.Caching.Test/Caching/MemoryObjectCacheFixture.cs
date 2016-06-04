@@ -9,18 +9,18 @@ namespace Meerkat.Test.Caching
     [TestFixture]
     public class MemoryObjectCacheFixture
     {
-        private MemoryObjectCache cache;
+        private MemoryObjectCache cache;       
 
         [Test]
         public void SetItem()
         {
-            cache.Set("A1", "A", DateTimeOffset.UtcNow.AddMinutes(1));
+            cache.Set("si", "A", DateTimeOffset.UtcNow.AddMinutes(1));
         }
 
         [Test]
         public void AddItem()
         {
-            var candidate = cache.AddOrGetExisting("A2", "A", DateTimeOffset.UtcNow.AddMinutes(1));
+            var candidate = cache.AddOrGetExisting("ai", "A", DateTimeOffset.UtcNow.AddMinutes(1));
 
             Assert.That(candidate, Is.Null);
         }
@@ -28,9 +28,9 @@ namespace Meerkat.Test.Caching
         [Test]
         public void AddExistingItem()
         {
-            cache.Set("A3", "A", DateTimeOffset.UtcNow.AddMinutes(1));
+            cache.Set("aei", "A", DateTimeOffset.UtcNow.AddMinutes(1));
 
-            var candidate = cache.AddOrGetExisting("A3", "A", DateTimeOffset.UtcNow.AddMinutes(1));
+            var candidate = cache.AddOrGetExisting("aei", "A", DateTimeOffset.UtcNow.AddMinutes(1));
 
             Assert.That(candidate, Is.Not.Null);
         }
@@ -38,7 +38,7 @@ namespace Meerkat.Test.Caching
         [Test]
         public void AddItemRegion()
         {
-            var candidate = cache.AddOrGetExisting("A", "A", DateTimeOffset.UtcNow.AddMinutes(1), "customer");
+            var candidate = cache.AddOrGetExisting("air", "A", DateTimeOffset.UtcNow.AddMinutes(1), "customer");
 
             Assert.That(candidate, Is.Null);
         }
@@ -46,9 +46,9 @@ namespace Meerkat.Test.Caching
         [Test]
         public void Retrieve()
         {
-            cache.AddOrGetExisting("B", "A", DateTimeOffset.UtcNow.AddMinutes(1));
+            cache.AddOrGetExisting("r", "A", DateTimeOffset.UtcNow.AddMinutes(1));
 
-            var candidate = cache.Contains("B");
+            var candidate = cache.Contains("r");
 
             Assert.That(candidate, Is.EqualTo(true));
         }
@@ -74,13 +74,13 @@ namespace Meerkat.Test.Caching
         [Test]
         public void RetrieveExpired()
         {
-            cache.AddOrGetExisting("D", "D", DateTimeOffset.UtcNow.AddSeconds(1));
+            cache.AddOrGetExisting("re", "re", DateTimeOffset.UtcNow.AddSeconds(1));
 
             // Need to wait 20s for the cache to expire
             // See http://stackoverflow.com/questions/1434284/when-does-asp-net-remove-expired-cache-items
             Thread.Sleep(21000);
 
-            var candidate = cache.Contains("D");
+            var candidate = cache.Contains("re");
 
             Assert.That(candidate, Is.EqualTo(false));
         }
@@ -88,9 +88,9 @@ namespace Meerkat.Test.Caching
         [Test]
         public void RegionKeyEquivalance()
         {
-            cache.AddOrGetExisting("E", "A", DateTimeOffset.UtcNow.AddMinutes(1), "customer");
+            cache.AddOrGetExisting("rke", "A", DateTimeOffset.UtcNow.AddMinutes(1), "customer");
 
-            var candidate = cache.Contains("customer::E");
+            var candidate = cache.Contains("customer::rke");
 
             Assert.That(candidate, Is.EqualTo(true));
         }

@@ -51,6 +51,7 @@
     <Compile Include="..\SolutionInfo.cs">
       <Link>Properties\SolutionInfo.cs</Link>
     </Compile>
+    <Compile Include="Caching\CacheExtensionFixture.cs" />
     <Compile Include="Caching\RegionKeyStrategyFixture.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Caching\MemoryObjectCacheFixture.cs" />
