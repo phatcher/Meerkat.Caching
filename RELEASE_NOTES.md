@@ -1,3 +1,6 @@
+#### 1.0.3 (2016-06-06)
+* Strong name assembly
+
 #### 1.0.2 (2016-06-06)
 * Drop framework version to 4.5 from 4.5.2
 
