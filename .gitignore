@@ -179,6 +179,7 @@ ClientBin/
 *.publishsettings
 node_modules/
 tools/
+.fake/
 
 
 # RIA/Silverlight projects
