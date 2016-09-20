@@ -22,7 +22,17 @@ namespace Meerkat.Caching
         public object this[string key]
         {
             get { return cache[key]; }
-            set { cache[key] = value; }
+            set
+            {
+                if (value == null)
+                {
+                    cache.Remove(key);
+                }
+                else
+                {
+                    cache[key] = value;
+                }
+            }
         }
 
         public long CacheMemoryLimit
@@ -37,6 +47,11 @@ namespace Meerkat.Caching
 
         public object AddOrGetExisting(string key, object value, DateTimeOffset absoluteExpiration, string regionName = null)
         {
+            // Just do a get if we are null as MemoryCache doesn't store nulls.
+            if (value == null)
+            {                
+                return Get(key, regionName);
+            }
             var regionKey = keyStrategy.Key(key, regionName);
 
             return cache.AddOrGetExisting(regionKey, value, absoluteExpiration);
@@ -78,6 +93,10 @@ namespace Meerkat.Caching
 
         public void Set(string key, object value, DateTimeOffset absoluteExpiration, string regionName = null)
         {
+            if (value == null)
+            {
+                return;
+            }
             var regionKey = keyStrategy.Key(key, regionName);
 
             cache.Set(regionKey, value, absoluteExpiration);

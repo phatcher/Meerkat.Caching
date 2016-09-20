@@ -18,11 +18,52 @@ namespace Meerkat.Test.Caching
         }
 
         [Test]
+        public void SetNull()
+        {
+            cache.Set("si", null, DateTimeOffset.UtcNow.AddMinutes(1));
+        }
+
+        [Test]
+        public void IndexerSet()
+        {
+            cache["si"] = "A";
+
+            var candidate = cache["si"];
+
+            Assert.That(candidate, Is.EqualTo("A"));
+        }
+
+        [Test]
+        public void IndexerSetNull()
+        {
+            cache["si"] = "A";
+            cache["si"] = null;
+
+            var candidate = cache["si"];
+
+            Assert.That(candidate, Is.Null);
+        }
+
+        [Test]
         public void AddItem()
         {
             var candidate = cache.AddOrGetExisting("ai", "A", DateTimeOffset.UtcNow.AddMinutes(1));
 
             Assert.That(candidate, Is.Null);
+        }
+
+        [Test]
+        public void AddNull()
+        {
+            cache.AddOrGetExisting("B", null, DateTimeOffset.UtcNow.AddMinutes(1), "customer");
+
+            var candidate = cache.Contains("B", "customer");
+
+            Assert.That(candidate, Is.EqualTo(false));
+
+            var result = cache.Get("B", "customer");
+
+            Assert.That(result, Is.EqualTo(null));
         }
 
         [Test]
@@ -48,9 +89,9 @@ namespace Meerkat.Test.Caching
         {
             cache.AddOrGetExisting("r", "A", DateTimeOffset.UtcNow.AddMinutes(1));
 
-            var candidate = cache.Contains("r");
+            var candidate = cache.Get("r");
 
-            Assert.That(candidate, Is.EqualTo(true));
+            Assert.That(candidate, Is.EqualTo("A"));
         }
 
         [Test]
@@ -58,9 +99,9 @@ namespace Meerkat.Test.Caching
         {
             cache.AddOrGetExisting("B", "A", DateTimeOffset.UtcNow.AddMinutes(1), "customer");
 
-            var candidate = cache.Contains("B", "customer");
+            var candidate = cache.Get("B", "customer");
 
-            Assert.That(candidate, Is.EqualTo(true));
+            Assert.That(candidate, Is.EqualTo("A"));
         }
 
         [Test]

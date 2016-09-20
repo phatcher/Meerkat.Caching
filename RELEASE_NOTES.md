@@ -1,3 +1,6 @@
+#### 1.0.4 (2016-09-20)
+* Protect against nulls being stored against MemoryCache
+
 #### 1.0.3 (2016-06-06)
 * Strong name assembly
 
