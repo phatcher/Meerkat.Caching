@@ -7,7 +7,7 @@ The rationale for thsi this so we can have a simple caching implementation for u
 
 We also address the lack of region support in MemoryCache in our wrapper by providing a strategy pattern for constructing a composite key/region key which is then passed to the underlying MemoryCache instance.
 
-[![NuGet](https://img.shields.io/nuget/v/Meerkat.Caching.svg)](https://img.shields.io/nuget/v/Meerkat.Caching.svg)
+[![NuGet](https://img.shields.io/nuget/v/Meerkat.Caching.svg)](https://www.nuget.org/packages/Meerkat.Caching/)
 [![Build status](https://ci.appveyor.com/api/projects/status/7ycnghu7s0umys9e/branch/master?svg=true)](https://ci.appveyor.com/project/PaulHatcher/meerkat-caching/branch/master)
 
 
