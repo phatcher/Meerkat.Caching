@@ -11,7 +11,7 @@ open Fake.ReleaseNotesHelper
 // Version info
 let projectName = "Meerkat.Caching"
 let projectSummary = ""
-let projectDescription = "A simple caching layerT"
+let projectDescription = "A simple cache that exposes the same interface as MemoryCache"
 let authors = ["Paul Hatcher"]
 
 let release = LoadReleaseNotes "RELEASE_NOTES.md"

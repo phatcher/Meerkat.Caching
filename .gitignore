@@ -225,3 +225,4 @@ Desktop.ini
 
 # Recycle Bin used on file shares
 $RECYCLE.BIN/
+/code/Meerkat.Caching/App_Packages/

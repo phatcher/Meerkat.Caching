@@ -1,3 +1,6 @@
+#### 1.0.5 (2016-12-22)
+* Replace Common.Logging with LibLog
+
 #### 1.0.4 (2016-09-20)
 * Protect against nulls being stored against MemoryCache
 

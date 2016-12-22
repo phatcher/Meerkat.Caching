@@ -1,11 +1,19 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 14
-VisualStudioVersion = 14.0.25123.0
+VisualStudioVersion = 14.0.25420.1
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Meerkat.Caching.Test", "code\Meerkat.Caching.Test\Meerkat.Caching.Test.csproj", "{A1A05ECA-3E6B-41CF-9FD8-B42FD6352EA7}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Meerkat.Caching", "code\Meerkat.Caching\Meerkat.Caching.csproj", "{D724FF9B-D546-4482-9CCF-9C36578BA97A}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{F4783DDE-140C-4E3C-9450-56E4BA89E72D}"
+	ProjectSection(SolutionItems) = preProject
+		build.fsx = build.fsx
+		nuget\Meerkat.Caching.nuspec = nuget\Meerkat.Caching.nuspec
+		README.md = README.md
+		RELEASE_NOTES.md = RELEASE_NOTES.md
+	EndProjectSection
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
