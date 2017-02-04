@@ -36,8 +36,22 @@ namespace Meerkat.Test.Caching
             Assert.That(candidate, Is.SameAs(expected), "Cache values differ");
         }
 
+        [Test]
+        public void LazyAddThrowsOnException()
+        {
+            var cache = MemoryObjectCacheFactory.Default();
+
+            Assert.Throws<NotSupportedException>(() => cache.AddOrGetExisting("bad", BadFunction, DateTimeOffset.UtcNow.AddSeconds(10)));
+            Assert.That(cache["bad"], Is.Null, "Cache entry differs");
+        }
+
+        private Foo BadFunction()
+        {
+            throw new NotSupportedException();
+        }
+
         private class Foo
-        {            
+        {
         }
     }
 }

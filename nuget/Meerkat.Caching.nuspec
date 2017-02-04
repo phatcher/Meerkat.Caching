@@ -13,6 +13,7 @@
         <releaseNotes>@releaseNotes@</releaseNotes>
         <tags>AspNet cache</tags>
         <dependencies>
+            <dependency id="Meerkat.Logging" version="1.0.0" />
         </dependencies>
         <requireLicenseAcceptance>false</requireLicenseAcceptance>
     </metadata>

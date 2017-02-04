@@ -1,3 +1,6 @@
+#### 1.0.6 (2017-02-4)
+* Replace LibLog with Meerkat.Logging
+
 #### 1.0.5 (2016-12-22)
 * Replace Common.Logging with LibLog
 

@@ -144,6 +144,8 @@ publish/
 *.[Pp]ublish.xml
 *.azurePubxml
 
+# Paket
+.paket/paket.exec
 
 # NuGet Packages Directory
 ## TODO: If you have NuGet Package Restore enabled, uncomment the next line

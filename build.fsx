@@ -1,6 +1,6 @@
 /// FAKE Build script
 
-#r "packages/FAKE/tools/FakeLib.dll"
+#r "packages/build/FAKE/tools/FakeLib.dll"
 open Fake
 open Fake.AssemblyInfoFile
 open Fake.Git
@@ -25,7 +25,7 @@ let nunitPath = toolsDir @@ "NUnit-2.6.3/bin"
 
 // Targets
 Target "Clean" (fun _ ->
-    CleanDir buildDir
+    CleanDirs [buildDir;]
 )
 
 Target "PackageRestore" (fun _ ->
