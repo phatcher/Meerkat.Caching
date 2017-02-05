@@ -38,8 +38,8 @@
     <AssemblyOriginatorKeyFile>..\..\Meerkat.Caching.snk</AssemblyOriginatorKeyFile>
   </PropertyGroup>
   <ItemGroup>
-    <Reference Include="Meerkat.Logging, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>..\..\packages\Meerkat.Logging.1.0.0\lib\net45\Meerkat.Logging.dll</HintPath>
+    <Reference Include="Meerkat.Logging, Version=1.0.2.0, Culture=neutral, PublicKeyToken=48420f6ca18bf904, processorArchitecture=MSIL">
+      <HintPath>..\..\packages\Meerkat.Logging.1.0.2\lib\net45\Meerkat.Logging.dll</HintPath>
       <Private>True</Private>
     </Reference>
     <Reference Include="System" />
