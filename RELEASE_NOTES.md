@@ -1,3 +1,7 @@
+### 1.0.7 (2017-06-11)
+* Introduce CacheConfiguration helper to retrieve cache durations from AppSettings
+* Add async version of AddOrGetExisting extension method
+
 #### 1.0.6 (2017-02-4)
 * Replace LibLog with Meerkat.Logging
 
