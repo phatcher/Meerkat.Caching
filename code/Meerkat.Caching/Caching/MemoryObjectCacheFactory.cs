@@ -1,4 +1,5 @@
-﻿using System.Runtime.Caching;
+﻿#if NET45
+using System.Runtime.Caching;
 
 namespace Meerkat.Caching
 {
@@ -33,3 +34,4 @@ namespace Meerkat.Caching
         }
     }
 }
+#endif

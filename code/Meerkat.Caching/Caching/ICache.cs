@@ -4,12 +4,12 @@ using System.Collections.Generic;
 namespace Meerkat.Caching
 {
     /// <summary>
-    /// Provides object caching
+    /// Abstraction over an object cache.
     /// </summary>
     public interface ICache
     {
         /// <summary>
-        /// Gets or sets a value in the cache by using the default indexer property for an instance of the <see cref="MemoryObjectCache"/> class.
+        /// Gets or sets a value in the cache by using the default indexer property for an instance of the <see cref="ICache"/> class.
         /// </summary>
         /// <param name="key">A unique identifier for the cache value to get or set.</param>
         /// <returns>The value in the cache instance for the specified key, if the entry exists; otherwise, null.</returns>

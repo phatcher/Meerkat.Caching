@@ -3,6 +3,9 @@ using System.Threading.Tasks;
 
 namespace Meerkat.Caching
 {
+    /// <summary>
+    /// Extension methods for <see cref="ICache"/>
+    /// </summary>
     public static class CacheExtensions
     {
         /// <summary>

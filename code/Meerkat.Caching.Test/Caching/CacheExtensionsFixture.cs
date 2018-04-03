@@ -6,6 +6,7 @@ using NUnit.Framework;
 
 namespace Meerkat.Test.Caching
 {
+#if NET45
     [TestFixture]
     public class CacheExtensionsFixture
     {
@@ -78,7 +79,7 @@ namespace Meerkat.Test.Caching
         {
             var cache = MemoryObjectCacheFactory.Default();
 
-            Assert.Throws<NotSupportedException>(async () => await cache.AddOrGetExistingAsync("bad", async () => await FooFactory(BadFunction()), DateTimeOffset.UtcNow.AddSeconds(10)));
+            Assert.ThrowsAsync<NotSupportedException>(async () => await cache.AddOrGetExistingAsync("bad", async () => await FooFactory(BadFunction()), DateTimeOffset.UtcNow.AddSeconds(10)));
             Assert.That(cache["bad"], Is.Null, "Cache entry differs");
         }
 
@@ -97,4 +98,5 @@ namespace Meerkat.Test.Caching
             public string Name { get; set; }
         }
     }
+#endif
 }

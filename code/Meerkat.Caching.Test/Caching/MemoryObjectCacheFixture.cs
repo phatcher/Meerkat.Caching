@@ -6,6 +6,7 @@ using NUnit.Framework;
 
 namespace Meerkat.Test.Caching
 {
+#if NET45
     [TestFixture]
     public class MemoryObjectCacheFixture
     {
@@ -142,4 +143,5 @@ namespace Meerkat.Test.Caching
             cache = MemoryObjectCacheFactory.Default();
         }
     }
+#endif
 }
