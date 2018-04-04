@@ -31,6 +31,14 @@ namespace Meerkat.Caching
             return value;
         }
 
+        public static T LazyAddOrGetExisting<T>(this ICache cache, string key, Func<T> creator, DateTimeOffset absoluteExpiration, string regionName = null)
+        {
+            var lazy = new Lazy<T>(creator);
+            var value = (Lazy<T>)cache.AddOrGetExisting(key, lazy, absoluteExpiration, regionName);
+
+            return (value ?? lazy).Value;
+        }
+
         /// <summary>
         /// Asynchronous lazy strongly-typed version of AddOrGetExisting which only invokes the function if the value is not present, 
         /// and returns either the cache value or the newly created value.
@@ -43,6 +51,21 @@ namespace Meerkat.Caching
         /// <param name="regionName"></param>
         /// <returns>Returns either the value that exists or the value returns from the creator function</returns>
         public static async Task<T> AddOrGetExistingAsync<T>(this ICache cache, string key, Func<Task<T>> creator, DateTimeOffset absoluteExpiration, string regionName = null)
+        {
+            T value;
+            if (cache.Contains(key, regionName))
+            {
+                value = (T)cache.Get(key, regionName);
+            }
+            else
+            {
+                value = await creator().ConfigureAwait(false);
+                cache.Set(key, value, absoluteExpiration, regionName);
+            }
+            return value;
+        }
+
+        public static async Task<T> LazyAddOrGetExistingAsync<T>(this ICache cache, string key, Func<Task<T>> creator, DateTimeOffset absoluteExpiration, string regionName = null)
         {
             T value;
             if (cache.Contains(key, regionName))

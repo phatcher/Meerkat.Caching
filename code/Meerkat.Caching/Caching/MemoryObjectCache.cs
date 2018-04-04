@@ -41,16 +41,10 @@ namespace Meerkat.Caching
         }
 
         /// <copydoc cref="ICache.CacheMemoryLimit" />
-        public long CacheMemoryLimit
-        {
-            get { return cache.CacheMemoryLimit; }
-        }
+        public long CacheMemoryLimit => cache.CacheMemoryLimit;
 
         /// <copydoc cref="ICache.Name" />
-        public string Name
-        {
-            get { return cache.Name; }
-        }
+        public string Name => cache.Name;
 
         /// <copydoc cref="ICache.AddOrGetExisting" />
         public object AddOrGetExisting(string key, object value, DateTimeOffset absoluteExpiration, string regionName = null)

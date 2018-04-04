@@ -70,6 +70,9 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Caching\ICache.cs" />
     <Compile Include="Caching\MemoryObjectCache.cs" />
+    <Compile Include="System\AsyncLazy.cs" />
+    <Compile Include="System\AsyncLazyCatcher.cs" />
+    <Compile Include="System\LazyCatcher.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="..\..\Meerkat.Caching.snk">
@@ -77,6 +80,7 @@
     </None>
     <None Include="packages.config" />
   </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">
     <PropertyGroup>
