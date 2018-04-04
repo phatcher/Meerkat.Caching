@@ -1,12 +1,13 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+#if NET45
 using System.Runtime.Caching;
 
 namespace Meerkat.Caching
 {
     /// <summary>
-    /// Simple <see cref="MemoryCache"/> wrapper for <see cref="ICache"/>
+    /// Implemenation of <see cref="ICache"/> using <see cref="MemoryCache"/>.
     /// </summary>
     public class MemoryObjectCache : ICache
     {
@@ -24,9 +25,10 @@ namespace Meerkat.Caching
             this.keyStrategy = keyStrategy;
         }
 
+        /// <copydoc cref="ICache.this" />
         public object this[string key]
         {
-            get { return cache[key]; }
+            get => cache[key];
             set
             {
                 if (value == null)
@@ -116,3 +118,4 @@ namespace Meerkat.Caching
         }
     }
 }
+#endif

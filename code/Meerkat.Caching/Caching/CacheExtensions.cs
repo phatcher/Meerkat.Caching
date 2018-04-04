@@ -1,8 +1,12 @@
 ﻿using System;
+using System.Threading;
 using System.Threading.Tasks;
 
 namespace Meerkat.Caching
 {
+    /// <summary>
+    /// Extension methods for <see cref="ICache"/>
+    /// </summary>
     public static class CacheExtensions
     {
         /// <summary>
@@ -34,9 +38,9 @@ namespace Meerkat.Caching
         public static T LazyAddOrGetExisting<T>(this ICache cache, string key, Func<T> creator, DateTimeOffset absoluteExpiration, string regionName = null)
         {
             var lazy = new Lazy<T>(creator);
-            var value = (Lazy<T>)cache.AddOrGetExisting(key, lazy, absoluteExpiration, regionName);
+            var value = (T)cache.AddOrGetExisting(key, lazy, absoluteExpiration, regionName);
 
-            return (value ?? lazy).Value;
+            return value == null ? lazy.Value : value;
         }
 
         /// <summary>

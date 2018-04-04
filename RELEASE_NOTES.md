@@ -1,3 +1,6 @@
+### 2.0.0 (2018-04-03)
+* * Target net45 and netstandard2.0
+
 ### 1.0.7 (2017-06-11)
 * Introduce CacheConfiguration helper to retrieve cache durations from AppSettings
 * Add async version of AddOrGetExisting extension method

@@ -6,6 +6,7 @@ using NUnit.Framework;
 
 namespace Meerkat.Test.Caching
 {
+#if NET45
     [TestFixture]
     public class CacheExtensionFixture
     {
@@ -65,4 +66,5 @@ namespace Meerkat.Test.Caching
             return count;
         }
     }
+#endif
 }
