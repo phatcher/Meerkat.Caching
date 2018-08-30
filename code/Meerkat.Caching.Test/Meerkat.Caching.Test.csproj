@@ -1,6 +1,6 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk">
   <PropertyGroup>
-    <TargetFrameworks>net45;netcoreapp2.0</TargetFrameworks>
+    <TargetFrameworks>net45;net462;net471;net472;netcoreapp2.0</TargetFrameworks>
     <RootNamespace>Meerkat.Test</RootNamespace>
 	<GenerateAssemblyInfo>false</GenerateAssemblyInfo>
 	<OutputPath>$(SolutionDir)/build/$(Configuration)/$(AssemblyName)/$(TargetFramework)/</OutputPath>

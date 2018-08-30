@@ -1,5 +1,8 @@
+### 2.1.0 (2018-08-30)
+* Target net462, net471 and net472
+
 ### 2.0.0 (2018-04-03)
-* * Target net45 and netstandard2.0
+* Target net45 and netstandard2.0
 
 ### 1.0.7 (2017-06-11)
 * Introduce CacheConfiguration helper to retrieve cache durations from AppSettings
