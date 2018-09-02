@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
-#if NET45
+#if !NETSTANDARD
 using System.Runtime.Caching;
 
 namespace Meerkat.Caching

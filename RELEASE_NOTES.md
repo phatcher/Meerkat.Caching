@@ -1,3 +1,6 @@
+### 2.1.1 (2018-09-02)
+* Enable MemoryCache for net462, net471 and net472
+
 ### 2.1.0 (2018-08-30)
 * Target net462, net471 and net472
 
