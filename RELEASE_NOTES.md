@@ -1,3 +1,6 @@
+### 2.1.2 (2018-09-03)
+* Tidy up package dependencies
+
 ### 2.1.1 (2018-09-02)
 * Enable MemoryCache for net462, net471 and net472
 
