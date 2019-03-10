@@ -9,20 +9,20 @@
     <Title>Meerkat Caching</Title>
     <Copyright>Copyright © 2016 Paul Hatcher</Copyright>
     <PackageLicenseUrl>http://opensource.org/licenses/mit-license.php</PackageLicenseUrl>
+    <PackageLicenceType>MIT</PackageLicenceType>
     <PackageProjectUrl>https://github.com/phatcher/Meerkat.Caching</PackageProjectUrl>
     <PackageRequireLicenceAcceptance>False</PackageRequireLicenceAcceptance>
     <PackageTags>MemoryCache cache</PackageTags>
-    <RepositoryUrl>https://github.com/phatcher/Meerkat.Caching</RepositoryUrl>
-    <RepositoryType>git</RepositoryType>
     <Authors>Paul Hatcher</Authors>
-	<OutputPath>$(SolutionDir)/build/$(Configuration)/$(AssemblyName)/$(TargetFramework)/</OutputPath>
-	<OutDir>$(OutputPath)</OutDir>
-	<SignAssembly>true</SignAssembly>
-	<AssemblyOriginatorKeyFile>..\..\Meerkat.Caching.snk</AssemblyOriginatorKeyFile>
-	<DelaySign>false</DelaySign>
+    <OutputPath>$(SolutionDir)/build/$(Configuration)/$(AssemblyName)/$(TargetFramework)/</OutputPath>
+    <OutDir>$(OutputPath)</OutDir>
+    <SignAssembly>true</SignAssembly>
+    <AssemblyOriginatorKeyFile>..\..\Meerkat.Caching.snk</AssemblyOriginatorKeyFile>
+    <DelaySign>false</DelaySign>
   </PropertyGroup>
   <ItemGroup>
     <PackageReference Include="Meerkat.Logging" Version="2.2.1" />
+    <PackageReference Include="Microsoft.SourceLink.GitHub" Version="1.0.0-beta2-18618-05" PrivateAssets="All"/>
     <PackageReference Include="System.Configuration.ConfigurationManager" Version="4.5.0" Condition="'$(TargetFramework)' == 'netstandard2.0'" />
   </ItemGroup>
   <ItemGroup>
@@ -42,7 +42,7 @@
     <None Include="..\..\Meekat.Caching.snk" Link="Properties\Meekat.Caching.snk" />
   </ItemGroup>
   <ItemGroup>
-      <Reference Include="System.Configuration" Condition="'$(TargetFramework)' != 'netstandard2.0'" />
-      <Reference Include="System.Runtime.Caching" Condition="'$(TargetFramework)' != 'netstandard2.0'" />
+    <Reference Include="System.Configuration" Condition="'$(TargetFramework)' != 'netstandard2.0'" />
+    <Reference Include="System.Runtime.Caching" Condition="'$(TargetFramework)' != 'netstandard2.0'" />
   </ItemGroup>
 </Project>
