@@ -6,6 +6,9 @@ namespace Meerkat.Caching
     /// <summary>
     /// Abstraction over an object cache.
     /// </summary>
+#if NETSTANDARD
+    [Obsolete("Use IMemoryCache/IDistributedCache")]
+#endif
     public interface ICache
     {
         /// <summary>

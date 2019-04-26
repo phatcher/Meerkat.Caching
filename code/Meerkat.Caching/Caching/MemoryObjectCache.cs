@@ -1,13 +1,13 @@
-﻿using System;
+﻿#if !NETSTANDARD
+using System;
 using System.Collections.Generic;
 using System.Linq;
-#if !NETSTANDARD
 using System.Runtime.Caching;
 
 namespace Meerkat.Caching
 {
     /// <summary>
-    /// Implemenation of <see cref="ICache"/> using <see cref="MemoryCache"/>.
+    /// Implementation of <see cref="ICache"/> using <see cref="MemoryCache"/>.
     /// </summary>
     public class MemoryObjectCache : ICache
     {
@@ -70,7 +70,6 @@ namespace Meerkat.Caching
         }
 
         /// <copydoc cref="ICache.Get(string, string)" />
-
         public object Get(string key, string regionName = null)
         {
             var regionKey = keyStrategy.Key(key, regionName);
@@ -79,7 +78,6 @@ namespace Meerkat.Caching
         }
 
         /// <copydoc cref="ICache.Get" />
-
         public long GetCount(string regionName = null)
         {
             // NB This is not region aware
@@ -87,7 +85,6 @@ namespace Meerkat.Caching
         }
 
         /// <copydoc cref="ICache.GetValues" />
-
         public IDictionary<string, object> GetValues(IEnumerable<string> keys, string regionName = null)
         {
             var regionKeys = keys.Select(key => keyStrategy.Key(key, regionName)).ToList();
@@ -96,7 +93,6 @@ namespace Meerkat.Caching
         }
 
         /// <copydoc cref="ICache.Remove" />
-
         public object Remove(string key, string regionName = null)
         {
             var regionKey = keyStrategy.Key(key, regionName);
@@ -105,7 +101,6 @@ namespace Meerkat.Caching
         }
 
         /// <copydoc cref="ICache.Set" />
-
         public void Set(string key, object value, DateTimeOffset absoluteExpiration, string regionName = null)
         {
             if (value == null)

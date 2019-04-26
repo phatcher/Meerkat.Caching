@@ -6,7 +6,7 @@ using NUnit.Framework;
 
 namespace Meerkat.Test.Caching
 {
-#if NET45
+#if NETFRAMEWORK
     [TestFixture]
     public class MemoryObjectCacheFixture
     {
