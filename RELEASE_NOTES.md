@@ -1,3 +1,7 @@
+### 2.2.1 (2019-04-29)
+* Further helper methods for IMemoryCache/IDistributedCache.
+* Add ISynchronizer.Remove for releasing semaphores
+
 ### 2.2.0 (2019-04-26)
 * Add helpers for service level caching and IMemoryCache/IDistributedCache.
 * Include pdbs in package

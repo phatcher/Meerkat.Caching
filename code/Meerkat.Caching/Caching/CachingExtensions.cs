@@ -108,9 +108,37 @@ namespace Meerkat.Caching
         /// <param name="func"></param>
         /// <param name="cancellationToken"></param>
         /// <returns></returns>
+        public static T Synchronize<T>(this ISynchronizer synchronizer, string key, Func<T> func, CancellationToken cancellationToken = default(CancellationToken))
+        {
+            var semaphore = synchronizer.Synchronizer(key, out var isOwner);
+
+            semaphore.Wait(cancellationToken);
+            try
+            {
+                return func();
+            }
+            finally
+            {
+                if (isOwner)
+                {
+                    synchronizer.Remove(key);
+                }
+                semaphore.Release();
+            }
+        }
+
+        /// <summary>
+        /// Synchronize an asynchronous function invocation.
+        /// </summary>
+        /// <typeparam name="T"></typeparam>
+        /// <param name="synchronizer"></param>
+        /// <param name="key">Key to use</param>
+        /// <param name="func"></param>
+        /// <param name="cancellationToken"></param>
+        /// <returns></returns>
         public static async Task<T> Synchronize<T>(this ISynchronizer synchronizer, string key, Func<Task<T>> func, CancellationToken cancellationToken)
         {
-            var semaphore = synchronizer.Synchronizer(key);
+            var semaphore = synchronizer.Synchronizer(key, out var isOwner);
 
             await semaphore.WaitAsync(cancellationToken);
             try
@@ -119,6 +147,10 @@ namespace Meerkat.Caching
             }
             finally
             {
+                if (isOwner)
+                {
+                    synchronizer.Remove(key);
+                }
                 semaphore.Release();
             }
         }

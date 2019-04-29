@@ -15,9 +15,33 @@ namespace Meerkat.Caching
             locks = new ConcurrentDictionary<string, SemaphoreSlim>();
         }
 
-        public SemaphoreSlim Synchronizer(string key)
+        public SemaphoreSlim Synchronizer(string key, out bool isOwner)
         {
-            return locks.GetOrAdd(key, new SemaphoreSlim(1));
+            isOwner = false;
+
+            // Adapted as per https://github.com/aspnet/Extensions/issues/708
+            if (!locks.TryGetValue(key, out var semaphore))
+            {
+                SemaphoreSlim createdSemaphore = null;
+                // Try to add the value, this is not atomic, so multiple semaphores could be created, but just one will be stored!
+                semaphore = locks.GetOrAdd(key, k => createdSemaphore = new SemaphoreSlim(1));
+                if (createdSemaphore != semaphore)
+                {
+                    // This semaphore was not the one that made it into the dictionary, will not be used!
+                    createdSemaphore?.Dispose();
+                }
+                else
+                {
+                    isOwner = true;
+                }
+            }
+
+            return semaphore;
+        }
+
+        public void Remove(string key)
+        {
+            locks.TryRemove(key, out _);
         }
     }
 }
