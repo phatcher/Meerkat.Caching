@@ -1,5 +1,8 @@
 ﻿using System;
+using System.Configuration;
+
 using Meerkat.Caching.Configuration;
+
 using NUnit.Framework;
 
 namespace Meerkat.Test.Caching.Configuration
@@ -12,7 +15,10 @@ namespace Meerkat.Test.Caching.Configuration
         [TestCase("B", "00:10")]
         public void ConfiguredDuration(string key, string value)
         {
-            TimeSpan expected = TimeSpan.Parse(value);
+#if NETCOREAPP
+            string path = ConfigurationManager.OpenExeConfiguration(ConfigurationUserLevel.None).FilePath;
+#endif
+            var expected = TimeSpan.Parse(value);
             var candidate = CacheConfiguration.Duration(key);
 
             Assert.That(candidate, Is.EqualTo(expected), "TimeSpan differs");
@@ -23,10 +29,12 @@ namespace Meerkat.Test.Caching.Configuration
         [TestCase("B", "00:30")]
         public void DefaultedDuration(string key, string value)
         {
-            TimeSpan expected = TimeSpan.Parse(value);
+            var expected = TimeSpan.Parse(value);
             var candidate = CacheConfiguration.Duration(key, TimeSpan.FromMinutes(30));
 
             Assert.That(candidate, Is.EqualTo(expected), "TimeSpan differs");
         }
+
+
     }
 }

@@ -165,7 +165,11 @@ namespace Meerkat.Caching
         /// <returns></returns>
         public static Task<T> Cache<T>(this CachePolicy policy, string key, Func<Task<T>> factory)
         {
+#if NETSTANDARD2_0
             return policy.ExecuteAsync(context => factory.Invoke(), new Context(key));
+#else
+            return policy.Execute(context => factory.Invoke(), new Context(key));
+#endif
         }
 
         /// <summary>

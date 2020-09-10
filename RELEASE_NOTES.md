@@ -1,3 +1,8 @@
+### 2.3.0 (2020-09-06)
+* Drop netstandard2.0 dependencies back to 2.1 so we can use with netcoreapp2.1
+* Introduce netstandard2.1 target for netcoreapp3.1 projects
+* Remove net462 and net471 targets as framework versions no longer suppported
+
 ### 2.2.1 (2019-04-29)
 * Further helper methods for IMemoryCache/IDistributedCache.
 * Add ISynchronizer.Remove for releasing semaphores

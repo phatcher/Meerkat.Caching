@@ -26,7 +26,11 @@ namespace Meerkat.Test.Sample
         {
             var key = "CustomerService.Get:{id}:{name}";
 
+#if NETCOREAPP2_1
             return policy.ExecuteAsync(context => service.GetAsync(id, name, cancellationToken), new Context(key));
+#else
+            return policy.Execute(context => service.GetAsync(id, name, cancellationToken), new Context(key));
+#endif
         }
 
         public Task<Customer> GetAsync2(int id, string name = null, CancellationToken cancellationToken = default(CancellationToken))

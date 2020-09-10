@@ -11,7 +11,7 @@ open System.IO
 // Version info
 let projectName = "Meerkat.Caching"
 let authors = ["Paul Hatcher"]
-let copyright = "Copyright © 2016 Paul Hatcher"
+let copyright = "Copyright Â© 2016 Paul Hatcher"
 
 let release = LoadReleaseNotes "RELEASE_NOTES.md"
 
@@ -28,7 +28,7 @@ Target "Clean" (fun _ ->
 )
 
 Target "PackageRestore" (fun _ ->
-    !! solutionFile
+   !! solutionFile
     |> MSBuildRelease buildDir "Restore"
     |> Log "AppBuild-Output: "
 )
